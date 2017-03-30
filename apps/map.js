@@ -55,6 +55,10 @@ export default class Map extends Component {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         this.setState({ initialPosition: position.coords });
+        let pos = this.state.positionArray; 
+        pos.push(position.coords);
+        this.setState( { positionArray : pos});
+       
       },
       (error) => alert(JSON.stringify(error)),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
